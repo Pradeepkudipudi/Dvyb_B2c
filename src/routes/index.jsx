@@ -1,13 +1,13 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import WomenwearRoute from "./WomenwearRoute";
-import IndividualProductDetailsPage from "../components/b2c/individual_product/IndividualProductDetailsPage";
+import IndividualProductDetailsPage from "../components/B2C/individual_product/IndividualProductDetailsPage"
 import ProductLayout from "../layout/ProductLayout";
 import MainLayout from "../layout/mainLayout";
 import { AuthProvider } from "../context/AuthContext";
 import { useProducts } from "../hooks/useProducts";
 import ProductDetailsPageIndividual from "../pages/B2C/ProductDetailsPageIndividual";
-import Home from "../pages/b2c/homePage/homePage";
+import Home from "../pages/B2C/homePage/homePage"; // ✅ FIXED: Changed b2c to B2C
 import ProfilePage from "../pages/B2C/Profilepage/ProfilePage";
 
 export default function AppRoutes() {
@@ -65,44 +65,16 @@ export default function AppRoutes() {
         }
       />
 
-
-
       {/* Profile Page Components */}
-
      <Route
         path="/your-profile"
         element={
-        
             <ProfilePage />
-
         }
       />
-      
 
     </Routes>
     </AuthProvider>
     </>
   );
 }
-
-
-
-
-
-
-
-
-// import { Routes, Route } from "react-router-dom";
-// import WomenwearRoute from "./WomenwearRoute";
-// import IndividualProductDetailsPage from "../components/b2c/individual_product/IndividualProductDetailsPage";
-
-// export default function AppRoutes() {
-//   return (
-//     <Routes>
-//       <Route path="/" element={<WomenwearRoute />} />
-//       <Route path="/womenwear" element={<WomenwearRoute />} />
-//       <Route path="/products/:id" element={<IndividualProductDetailsPage />} />
-//       {/* Add more routes here */}
-//     </Routes>
-//   );
-// }
