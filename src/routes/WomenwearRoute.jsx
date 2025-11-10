@@ -1,4 +1,4 @@
-import ProductGrid from "../components/b2c/products/ProductGrid";
+import ProductGrid from "../components/product/productGrid";
 
 export default function WomenwearRoute({ products }) {
   return <ProductGrid products={products} />;
