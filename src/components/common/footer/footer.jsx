@@ -1,5 +1,5 @@
 // components/footer/Footer.jsx
-import FooterLinks from "./FooterLinks";
+import FooterLinks from './footerLinks';
 import FooterSocials from "./FooterSocials";
 import FooterAppLinks from "./FooterAppLinks";
 import FooterAccordion from "./FooterAccordion";
@@ -8,7 +8,7 @@ import { footerSections } from "./footerData";
 
 export default function Footer() {
   return (
-    <footer className="bg-white md:mx-12 md:px-9">
+    <footer className="bg-white md:mx-12 md:px-9" >
       <div className=" py-12 max-w-7xl mx-auto">
         {/* DESKTOP */}
         <div className="hidden md:grid  grid-cols-2 lg:grid-cols-5 gap-10">
