@@ -1,6 +1,6 @@
 // src/pages/WomenwearPage.jsx
 import MainLayout from '../layout/MainLayout';
-import ProductGrid from '../components/b2c/products/ProductGrid';
+import ProductGrid from '../components/B2C/products/ProductGrid';
 
 const WomenwearPage = () => {
   return (

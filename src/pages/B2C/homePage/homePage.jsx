@@ -2,12 +2,12 @@ import CategoryCarousel from "../../../components/utils/CategoryCarousel";
 import ProductGrid from "../../../components/product/productGrid";
 import SectionTitle from "../../../components/utils/SectionTitle";
 import homeBanner from "../../../assets/B2C/landing/banner01.svg";
-import ClosetIconsSection from "../../../components/b2c/home/ClosetIconsSection";
+import ClosetIconsSection from "../../../components/B2C/home/ClosetIconsSection";
 import { useProducts } from "../../../hooks/useProducts";
 import { useStaticProducts } from "../../../hooks/useStaticProducts";
-import LuxuryPicks from "../../../components/b2c/home/LuxuryPicks";
-import SpotlightCollections from "../../../components/b2c/home/SpotlightCollections";
-import BestProducts from "../../../components/b2c/home/BestProducts";
+import LuxuryPicks from "../../../components/B2C/home/LuxuryPicks";
+import SpotlightCollections from "../../../components/B2C/home/SpotlightCollections";
+import BestProducts from "../../../components/B2C/home/BestProducts";
 
 
 
