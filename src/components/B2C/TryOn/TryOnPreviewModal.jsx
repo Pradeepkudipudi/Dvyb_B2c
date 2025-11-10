@@ -7,7 +7,7 @@ import bg3 from '../../../assets/ProductsPage/bg3.svg';
 import bg4 from '../../../assets/ProductsPage/bg4.svg';
 import { usePopup } from '../../../context/ToastPopupContext'; 
 import { addToWishlist, removeFromWishlist, isInWishlist } from '../../../services/WishlistService'; 
-import { addToCart,subscribeToCart } from '../../../services/cartService'; 
+import { cartService } from '../../../services/cartService'; 
 import { useAuth } from '../../../context/AuthContext';
 import { Heart } from "lucide-react";
 import toast from "react-hot-toast";
@@ -69,7 +69,8 @@ const TryOnPreviewModal = ({ isOpen, onClose, tryOnData }) => {
 
   (async () => {
     try {
-      const unsub = await subscribeToCart((cartItems) => {
+     const unsub = await cartService.subscribeToCart((cartItems) => {
+
         const ids = new Set(cartItems.map(item => item.productId || item.id));
         setCartIds(ids);
       });
@@ -196,7 +197,8 @@ const TryOnPreviewModal = ({ isOpen, onClose, tryOnData }) => {
         description: tryOnData.description || ''
       };
 
-      await addToCart(productId, productData, 1);
+    await cartService.addToCart(productId, productData, 1);
+
 
       showPopup("cart", {
         title: productData.name,

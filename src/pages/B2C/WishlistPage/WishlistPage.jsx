@@ -8,7 +8,7 @@ import {
   subscribeToWishlist,
   clearWishlist
 } from '../../../services/WishlistService';
-import { addToCart } from '../../../services/cartService'; 
+import { cartService } from '../../../services/cartService'; 
 import { toast } from "react-toastify";
 import { Trash2 } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';

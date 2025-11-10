@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Share2, ShoppingCart, Download, X, Loader2, ArrowLeft, Trash2 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useUserTryons } from '../../../hooks/useUserTryons';
-import { addToCart } from '../../../services/cartService'; 
+import { cartService } from '../../../services/cartService'; 
 import { deleteTryOn } from '../../../services/tryOnService'; 
 import { usePopup } from '../../../context/ToastPopupContext';
 import { useAuth } from '../../../context/AuthContext'; 

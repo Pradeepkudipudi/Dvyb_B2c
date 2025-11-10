@@ -2,6 +2,8 @@ import React, { Suspense, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useProducts } from "../../../hooks/useProducts";
 import { toast } from "react-hot-toast";
+import { cartService } from "../../../services/cartService";
+import { auth } from "../../../config/firebaseConfig"; 
 
 /**
  * Import child components here
@@ -97,6 +99,65 @@ const handleModalClose = () => {
 };
 
 
+const handleBuyNow = (event) => {
+    event.stopPropagation();
+    setAddingToCart(true);
+
+    navigate("/checkout", {
+      state: {
+        cartItems: [
+          {
+            id: product.id,
+            name: product.name,
+            price: product.price,
+            image: imageUrls[0],
+            color: product.selectedColors?.[0] || "Default",
+            size: product.selectedSizes?.[0] || "M",
+            quantity: 1,
+          },
+        ],
+      },
+    });
+
+    setAddingToCart(false);
+  };
+
+
+  const handleAddToBag = async (event) => {
+    event.stopPropagation();
+    setAddingToCart(true);
+
+    try {
+      const user = auth.currentUser;
+
+      // ✅ Check login status
+      if (!user) {
+        alert("Please login first to add items to your cart.");
+        setAddingToCart(false);
+        return;
+      }
+
+      // ✅ Add product to cart in Firestore
+      await cartService.addToCart(product.id, {
+        name: product.name,
+        price: product.price,
+        image: imageUrls[0],
+        color: product.selectedColors?.[0] || "Default",
+        size: product.selectedSizes?.[0] || "M",
+      });
+
+      console.log("Added to bag:", product.name);
+      navigate("/cart");
+    } catch (error) {
+      console.error(" Error adding to cart:", error);
+    } finally {
+      setAddingToCart(false);
+    }
+  };
+
+
+
+
 
   return (
     <div className="container mx-auto px-4 py-8 mt-22">
@@ -122,10 +183,15 @@ const handleModalClose = () => {
           />
           <ProductStockAndShipping />
           <ProductActionButtons
+            onBuyNow={(e) => handleBuyNow(e)} // 💳 Buy Now → Checkout
+            onAddToBag={(e) => handleAddToBag(e)} // 🛒 Add to Bag → Cart
+           onVirtualTryOn={handleTryOnClick}
+          />
+          {/* <ProductActionButtons
             onAddToBag={() => console.log("Add to bag")}
             onBuyNow={() => console.log("Buy now")}
             onVirtualTryOn={handleTryOnClick}
-          />
+          /> */}
           <OfferAndShippingInfo />
           <ProductDescriptionSection product={product} />
           <ProductDetailsSection product={product} />
