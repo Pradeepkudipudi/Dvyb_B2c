@@ -1,3 +1,4 @@
+import React from "react";
 import { Routes, Route } from "react-router-dom";
 import WomenwearRoute from "./WomenwearRoute";
 import IndividualProductDetailsPage from "../components/b2c/individual_product/IndividualProductDetailsPage";

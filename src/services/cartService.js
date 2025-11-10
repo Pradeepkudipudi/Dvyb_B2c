@@ -1,5 +1,5 @@
 
-import { auth,db } from "../config/firebaseConfig"; 
+import { auth, db } from "../config/firebaseConfig"; // ✅ Correct
 import { 
   collection, 
   doc, 

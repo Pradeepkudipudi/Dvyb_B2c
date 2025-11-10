@@ -7,6 +7,12 @@ export default defineConfig({
   server: {
     proxy: { "/api": "http://localhost:5000" },
   },
+  resolve: {
+    alias: {
+      // ❌ REMOVE THIS LINE - it's causing the error
+      // firebase: "firebase/app",
+    },
+  },
   build: {
     chunkSizeWarningLimit: 1500,
     rollupOptions: {
@@ -14,7 +20,6 @@ export default defineConfig({
         manualChunks: {
           react: ["react", "react-dom", "react-router-dom"],
           ui: ["lucide-react", "react-icons", "react-toastify", "react-hot-toast"],
-          firebase: ["firebase"],
         },
       },
     },

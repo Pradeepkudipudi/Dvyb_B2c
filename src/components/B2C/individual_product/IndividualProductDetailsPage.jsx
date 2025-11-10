@@ -1,3 +1,4 @@
+import React from "react";
 import { useParams } from "react-router-dom";
 import { useProducts } from "../../../hooks/useProducts";
 import { useState } from "react";

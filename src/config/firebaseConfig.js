@@ -8,6 +8,8 @@
  */
 
 import { initializeApp, getApps, getApp } from "firebase/app";
+// import firebase from "firebase";
+
 import { getAnalytics } from "firebase/analytics";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
