@@ -1,7 +1,8 @@
-import React from "react";
+import React, { Suspense, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useProducts } from "../../../hooks/useProducts";
-import { useState } from "react";
+import { toast } from "react-hot-toast";
+
 /**
  * Import child components here
  */

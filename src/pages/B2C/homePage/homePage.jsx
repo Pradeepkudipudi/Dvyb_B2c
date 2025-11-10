@@ -8,63 +8,44 @@ import { useStaticProducts } from "../../../hooks/useStaticProducts";
 import LuxuryPicks from "../../../components/B2C/home/LuxuryPicks";
 import SpotlightCollections from "../../../components/B2C/home/SpotlightCollections";
 import BestProducts from "../../../components/B2C/home/BestProducts";
-
-
+import { useNavigate } from "react-router-dom";
 
 export default function Home() {
-  // const { products, loading, error } = useProducts();
-  // const { loading, error } = useProducts();
   const { staticProducts, loading, error } = useStaticProducts();
-  console.log(staticProducts)
+  const navigate = useNavigate();
 
   if (loading) return <div className="text-center py-20">Loading…</div>;
   if (error) return <div className="text-center text-iserror py-20">{error}</div>;
 
-  // ----- Split data for sections -----
-  // const hero = products.find((p) => p.isNew); // or static banner data
-  // const wedding = products.filter((p) => p.category === "Wedding");
-  // const discount = products.filter((p) => p.discountPercent && p.discountPercent > 0);
-  // const bestsellers = products.slice(0, 8);
-  // const spotlight = products[0];
-  // const luxuryPicks = products.filter((p) => p.category === "Luxury").slice(0, 4); // For Luxurious Picks
-  // const closetIcons = products.filter((p) => p.category === "Closet").slice(0, 8); // Adjust category as needed
-
-  // ----- static data for sections -----
-  // Filter products based on category
-
+  // Safe array conversion
   const productsArray = Array.isArray(staticProducts) ? staticProducts : [];
 
+  // Filter products based on category
   const wedding = productsArray.filter((p) => p.category === "Wedding");
-  // const discount = productsArray.filter((p) => p.discountPercent && p.discountPercent > 0);
   const discount = productsArray.filter((p) => p.category === "Discount");
   const bestsellers = productsArray.filter((p) => p.category === "Bestselling").slice(0, 8);
-  const spotlight = productsArray.find((p) => p.category === "Spotlight");
   const luxuryPicks = productsArray.filter((p) => p.category === "Luxury").slice(0, 4);
   const closetIcons = productsArray.filter((p) => p.category === "Closet").slice(0, 8);
 
-
-
-
-
   return (
     <div className="mt-38">
-
-
-      <section
-        className="w-full max-w-[95vw] md:h-[90vh] aspect-3/2 sm:aspect-16/7 md:aspect-16/7 lg:aspect-16/5 m-2 md:m-4 lg:mx-7 mx-auto overflow-hidden flex justify-center items-center "
-      >
+      {/* 1. HERO BANNER */}
+      <section className="w-full max-w-[95vw] md:h-[90vh] aspect-3/2 sm:aspect-16/7 md:aspect-16/7 lg:aspect-16/5 m-2 md:m-4 lg:mx-7 mx-auto overflow-hidden flex justify-center items-center">
         <img
           src={homeBanner}
+          onClick={() => navigate('/womenwear')}
           alt="New Year Sale"
-          className="w-full h-full object-fill object-center"
+          className="w-full h-full object-fill object-center cursor-pointer hover:opacity-95 transition-opacity"
         />
       </section>
 
       {/* 2. WEDDING TALES */}
-      <section className="container mx-auto py-12 px-4">
-        <SectionTitle viewAll>Wedding Tales</SectionTitle>
-        <ProductGrid products={wedding} columns={3} />
-      </section>
+      {wedding.length > 0 && (
+        <section className="container mx-auto py-12 px-4">
+          <SectionTitle viewAll>Wedding Tales</SectionTitle>
+          <ProductGrid products={wedding} columns={3} />
+        </section>
+      )}
 
       {/* 3. SHOP BY CATEGORY */}
       <section className="py-4">
@@ -75,48 +56,45 @@ export default function Home() {
       </section>
 
       {/* 4. DISCOUNT COLLECTION */}
-      <section className="container mx-auto py-12 px-4">
-        <SectionTitle viewAll>Discount Collection</SectionTitle>
-        <ProductGrid products={discount} columns={4} />
-      </section>
-
-      {/* Luxurious Picks of the Day (from image) */}
-      <section className="container mx-auto py-12 px-4">
-        <SectionTitle>Luxurious Picks of the Day</SectionTitle>
-        {/* <ProductGrid products={luxuryPicks} columns={4} /> */}
-        <LuxuryPicks products={luxuryPicks} columns={4} />
-      </section>
-
-      {/* 5. SPOTLIGHT OF THE DAY */}
-      {spotlight && (
+      {discount.length > 0 && (
         <section className="container mx-auto py-12 px-4">
-          <SectionTitle>Spotlight of the Day</SectionTitle>
-
-          <SpotlightCollections />
+          <SectionTitle viewAll>Discount Collection</SectionTitle>
+          <ProductGrid products={discount} columns={4} />
         </section>
       )}
 
-      {/* 6. BESTSELLING */}
+      {/* 5. LUXURIOUS PICKS OF THE DAY */}
+      {luxuryPicks.length > 0 && (
+        <section className="container mx-auto py-12 px-4">
+          <SectionTitle>Luxurious Picks of the Day</SectionTitle>
+          <LuxuryPicks products={luxuryPicks} columns={4} />
+        </section>
+      )}
+
+      {/* 6. SPOTLIGHT OF THE DAY */}
       <section className="container mx-auto py-12 px-4">
-        <SectionTitle viewAll>Bestselling</SectionTitle>
-        <BestProducts products={bestsellers} columns={2} />
-        <ProductGrid products={wedding} columns={3} />
+        <SectionTitle>Spotlight of the Day</SectionTitle>
+        <SpotlightCollections />
       </section>
 
-      {/* 7. CLOSET ICONS (New Section) */}
-      <section className="container mx-auto py-12 px-4">
-        {closetIcons.length > 0 && (
-          <section>
-            <SectionTitle viewAll>Closet icons</SectionTitle>
-            <ClosetIconsSection products={closetIcons} columns={5} />
-            <ProductGrid products={discount} columns={4} />
-            <BestProducts products={bestsellers} columns={3} />
-          </section>
-        )}
-      </section>
+      {/* 7. BESTSELLING */}
+      {bestsellers.length > 0 && (
+        <section className="container mx-auto py-12 px-4">
+          <SectionTitle viewAll>Bestselling</SectionTitle>
+          <BestProducts products={bestsellers} columns={2} />
+          {wedding.length > 0 && <ProductGrid products={wedding} columns={3} />}
+        </section>
+      )}
 
-
+      {/* 8. CLOSET ICONS */}
+      {closetIcons.length > 0 && (
+        <section className="container mx-auto py-12 px-4">
+          <SectionTitle viewAll>Closet icons</SectionTitle>
+          <ClosetIconsSection products={closetIcons} columns={5} />
+          {discount.length > 0 && <ProductGrid products={discount} columns={4} />}
+          {bestsellers.length > 0 && <BestProducts products={bestsellers} columns={3} />}
+        </section>
+      )}
     </div>
   );
-
 }

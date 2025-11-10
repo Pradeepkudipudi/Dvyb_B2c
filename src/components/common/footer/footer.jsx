@@ -8,12 +8,16 @@ import { footerSections } from "./footerData";
 
 export default function Footer() {
   return (
-    <footer className="bg-white md:mx-12 md:px-9" >
-      <div className=" py-12 max-w-7xl mx-auto">
+    <footer className="bg-white md:mx-12 md:px-9">
+      <div className="py-12 max-w-7xl mx-auto">
         {/* DESKTOP */}
-        <div className="hidden md:grid  grid-cols-2 lg:grid-cols-5 gap-10">
+        <div className="hidden md:grid grid-cols-2 lg:grid-cols-5 gap-10">
           {footerSections.map((section) => (
-            <FooterLinks key={section.key} {...section} />
+            <FooterLinks 
+              key={section.key}
+              title={section.title}
+              links={section.links}
+            />
           ))}
 
           <div className="space-y-8">
@@ -42,7 +46,7 @@ export default function Footer() {
               <h5 className="font-medium uppercase text-xs tracking-wider mb-4">
                 Follow Us On
               </h5>
-              <div className="text-center ">
+              <div className="text-center">
                 <FooterSocials />
               </div>
             </div>
