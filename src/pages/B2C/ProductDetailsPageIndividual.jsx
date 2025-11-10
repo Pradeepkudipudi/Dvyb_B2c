@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
-import SimilarProductsSection from "../../components/b2c/similar_product/SimilarProductsSection";
+import SimilarProductsSection from "../../components/B2C/similar_product/SimilarProductsSection"; // ✅ Changed b2c to B2C
 import IndividualProduct from "../../components/B2C/individual_product/IndividualProductDetailsPage"
-import TrendingProductsSection from "../../components/b2c/trending_product/TrendingProductsSection";
+import TrendingProductsSection from "../../components/B2C/trending_product/TrendingProductsSection"; // ✅ Changed b2c to B2C
 
 const ProductDetailsPageIndividual = () => { 
   const { id } = useParams();
@@ -23,6 +23,5 @@ const ProductDetailsPageIndividual = () => {
     </div>
   );
 };
-
 
 export default ProductDetailsPageIndividual;
