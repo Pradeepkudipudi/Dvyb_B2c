@@ -1,4 +1,4 @@
-import Sidebar from "../components/b2c/sidebar/Sidebar";
+import Sidebar from "../components/B2C/ProfilePage/Sidebar";
 import AdsCarousel from "../components/common/AdSection/AdsCarousel";
 
 export default function ProductLayout({ children, products }) {
