@@ -2,7 +2,7 @@ import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 // import ProductCard from "../../product/ProductCard";
 import { scrollLeft, scrollRight } from "../../utils/scroll";
 import { luxIcon } from "../../../assets";
-import ProductCard from "../../product/productCard";
+import ProductCard from "../../B2C/products/ProductCard";
 
 export default function LuxuryPicks({ products }) {
   return (
