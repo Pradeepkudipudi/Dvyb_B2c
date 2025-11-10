@@ -1,7 +1,7 @@
   import React, { useState, useEffect } from 'react';
   import OrderDetails from './OrderDetails';
   import { subscribeToOrders } from '../../../services/OrderService'; 
-import InvoiceView from './InvoiceView.JSX'; 
+import InvoiceView from './InvoiceView'; 
 
   const MyOrders = () => {
     const [orders, setOrders] = useState([]);
