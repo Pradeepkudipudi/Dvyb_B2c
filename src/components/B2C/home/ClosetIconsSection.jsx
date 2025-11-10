@@ -1,6 +1,6 @@
 // ClosetIconsSection.jsx
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import ProductCard from "../../product/productCard";
+import ProductCard from "../../B2C/products/ProductCard";
 import ProductGrid from "../../product/productGrid";
 import { scrollLeft, scrollRight } from "../../utils/scroll";
 import SectionTitle from "../../utils/SectionTitle";
