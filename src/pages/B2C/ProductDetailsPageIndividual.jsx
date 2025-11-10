@@ -3,7 +3,7 @@ import SimilarProductsSection from "../../components/b2c/similar_product/Similar
 import IndividualProduct from "../../components/B2C/individual_product/IndividualProductDetailsPage"
 import TrendingProductsSection from "../../components/b2c/trending_product/TrendingProductsSection";
 
-const ProductDetailsPageIndividual = () => {
+const ProductDetailsPageIndividual = () => { 
   const { id } = useParams();
 
   return (
